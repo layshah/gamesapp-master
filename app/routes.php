@@ -22,6 +22,9 @@ Route::get('/create', 'GamesController@create');
 Route::get('/edit/{game}', 'GamesController@edit');
 Route::get('/delete/{game}', 'GamesController@delete');
 Route::get('/internshipdetail','GamesController@internshipdetail');
+Route::get('/createstudent','GamesController@createstudent');
+Route::get('/handleCreatestudent','GamesController@handleCreatestudent');
+Route::get('/handleuserdata','GamesController@handleuserdata');
 Route::get('/admin',function() {
    $games = companys_personal_info::all();
     return View::make('admin')->with('games',$games);
@@ -34,3 +37,6 @@ Route::post('/delete', 'GamesController@handleDelete');
 Route::post('/internshipdetail','GamesController@internshipdetail');
 Route::post('/handleinternshipdetail','GamesController@handleInternshipdetailCreate');
 Route::post('/handlesubdomain/{q}','GamesController@handlesubdomain');
+Route::post('/createstudent','GamesController@createstudent');
+Route::post('/handleCreatestudent','GamesController@handleCreatestudent');
+Route::post('/handleuserdata','GamesController@handleuserdata');

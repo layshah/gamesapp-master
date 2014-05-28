@@ -6,7 +6,8 @@
     </div>
   <div class="panel panel-default">
         <div class="panel-body">
-            <a href="{{ action('GamesController@create') }}" class="btn btn-primary">Create Game</a>
+            <a href="{{ action('GamesController@create') }}" class="btn btn-primary">Create company</a>
+            <a href="{{ action('GamesController@createstudent') }}" class="btn btn-primary">Create student</a>
         </div>
     </div>
     

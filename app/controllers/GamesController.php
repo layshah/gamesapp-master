@@ -18,6 +18,28 @@ class GamesController extends BaseController
         return View::make('create');
     }
 
+    public function createstudent()
+    {
+        // Show the create game form.
+        return View::make('createstudent');
+    }
+
+
+    public function handleCreatestudent()
+    {
+        // Handle create form submission.
+        $game = new user_master;
+        $game->username        = Input::get('username');
+        $game->password    = Input::get('password');
+        $game->email = Input::get('email');
+        
+        $game->save();
+        $umid=user_master::first()->get();
+        return View::make('userdetail')->with('umid',$umid);
+       // return Redirect::to('/form_internshipdetail');
+    }
+
+
     public function handleCreate()
     {
         // Handle create form submission.
@@ -31,6 +53,17 @@ class GamesController extends BaseController
 
         return Redirect::action('GamesController@internshipdetail');
        // return Redirect::to('/form_internshipdetail');
+    }
+
+    public function handleuserdata()
+    {
+        $game = new user_detail;
+        $game->cname        = Input::get('cname');
+        $game->Email    = Input::get('Email');
+        $game->contactno = Input::get('contactno');
+        $game->cculture     = Input::get('cculture');
+        $game->cdomain     = Input::get('cdomain');
+        $game->save(); 
     }
      
      public function internshipdetail()
@@ -71,7 +104,7 @@ class GamesController extends BaseController
         $game->type        = Input::get('type');
         $game->jobdesc    = Input::get('jobdesc');
         $game->nointernswant = Input::get('nointernswant');
-        $game->domain     = Input::get('domain');
+        $game->domain     = Input::get('fruits');
         $game->elegibility     = Input::get('elegibility');
         $game->unrelated     = Input::get('unrelated');
         $game->basicqualification     = Input::get('basicqualification');
