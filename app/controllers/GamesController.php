@@ -43,18 +43,23 @@ class GamesController extends BaseController
     return View::make('internshipdetail')->with('cid',$cid)->with('jid',$jid);
      }
 
-     public function handlesubdomain()
+     
+     public function handlesubdomain($q)
      {
       
-       
-        $jid=domain::where('pid','=','1')->get();
-        $result = array();
-        foreach ($jid as $xyz)
+       $kid=(int)$q;
+         
+        $jid=domain::where('pid','=',$q)->get();
+        $result['products'] = array();
+        
+        foreach ($jid as $xyzm)
             
            {
-            
-           
-             
+            $product=array();
+            $product['kid']=$kid;
+            $product['id']=$xyzm->did;
+           $product['name']=$xyzm->domain;
+        array_push($result["products"], $product);
            }
         return Response::make(json_encode($result), 200); 
          

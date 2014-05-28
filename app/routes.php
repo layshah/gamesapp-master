@@ -26,7 +26,7 @@ Route::get('/admin',function() {
    $games = companys_personal_info::all();
     return View::make('admin')->with('games',$games);
 });
-Route::get('/handlesubdomain','GamesController@handlesubdomain');
+Route::get('/handlesubdomain/{q}','GamesController@handlesubdomain');
 // Handle form submissions.
 Route::post('/create', 'GamesController@handleCreate');
 Route::post('/edit', 'GamesController@handleEdit');

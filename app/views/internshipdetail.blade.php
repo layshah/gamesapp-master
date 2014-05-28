@@ -15,15 +15,25 @@ function showsubdomain(str) {
     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
   
-  xmlhttp.open("POST","/handlesubdomain/q="+str,true);
+  xmlhttp.open("get","/handlesubdomain/"+str,true);
   xmlhttp.send();
   xmlhttp.onreadystatechange = function(){
         if(xmlhttp.status == 200)
         {
         
         console.log(xmlhttp.responseText);
-            //var retValue = JSON.parse(xmlhttp.responseText);
+            var retValue = JSON.parse(xmlhttp.responseText);
             //console.log(retValue);
+            select = document.getElementsByName('fruits')[0];
+            select.innerHTML="";
+            console.log(retValue.products.length);
+            for (var i = 0; i < retValue.products.length; i++) {
+        var option = document.createElement("option");
+        option.value = retValue.products[i].id;
+        option.innerHTML = retValue.products[i].name;
+        console.dir(option);
+        select.appendChild(option);
+    }
         }
   }
 }
@@ -37,7 +47,7 @@ function showsubdomain(str) {
         <h1>Create Internship<small>remember that this form is for one domain</small></h1>
     </div>
 
-    <form action="{{ action('GamesController@handleInternshipdetailCreate') }}" method="post" role="form">
+    <form action="{{ action('GamesController@handleInternshipdetailCreate') }}" method="post" role="form" name="form1">
         <div class="form-group">
             <label for="type">Type of internship</label>
             <input type="text" class="form-control" name="type" />
@@ -54,7 +64,7 @@ function showsubdomain(str) {
         
         <div class="form-group">
             <label for="domain">Enter Domain of intern</label>
-           <select onchange="showsubdomain(this.value)">
+           <select onchange="showsubdomain(this.value)" name="domain">
 
            @foreach($cid as $xyz)
 
@@ -66,8 +76,8 @@ function showsubdomain(str) {
         </div>
 
         <div class="form-group">
-            <label for="domain">Enter Domain of intern</label>
-           <select>
+            <label for="subdomain">Enter SubDomain of intern</label>
+           <select name="fruits">
 
            @foreach($jid as $xyzm)
 
