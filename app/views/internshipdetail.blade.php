@@ -1,6 +1,38 @@
-@extends('layout')
+<html>
 
-@section('content')
+<head>
+<script>
+function showsubdomain(str) {
+    alert("hi");
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  
+  xmlhttp.open("POST","/handlesubdomain/q="+str,true);
+  xmlhttp.send();
+  xmlhttp.onreadystatechange = function(){
+        if(xmlhttp.status == 200)
+        {
+        
+        console.log(xmlhttp.responseText);
+            //var retValue = JSON.parse(xmlhttp.responseText);
+            //console.log(retValue);
+        }
+  }
+}
+</script>
+</head>
+
+
+
+<body>
     <div class="page-header">
         <h1>Create Internship<small>remember that this form is for one domain</small></h1>
     </div>
@@ -22,9 +54,28 @@
         
         <div class="form-group">
             <label for="domain">Enter Domain of intern</label>
-           
-            <input type="text" class="form-control" name="domain" />
+           <select onchange="showsubdomain(this.value)">
+
+           @foreach($cid as $xyz)
+
+           <option value="{{ $xyz->did }}"> "{{ $xyz->domain }}" </option>
+           @endforeach
+       </select>
+         
+
         </div>
+
+        <div class="form-group">
+            <label for="domain">Enter Domain of intern</label>
+           <select>
+
+           @foreach($jid as $xyzm)
+
+           <option value="{{ $xyzm->did }}"> "{{ $xyzm->domain }}" </option>
+           @endforeach
+       </select>
+         
+         </div>
 
          <div class="form-group">
             <label for="elegibility">Enter elegibility</label>
@@ -71,5 +122,6 @@
         <input type="submit" value="Next" class="btn btn-primary" />
         <a href="{{ action('GamesController@index') }}" class="btn btn-link">Cancel</a>
     </form>
-@stop
+</body>
 
+<html>

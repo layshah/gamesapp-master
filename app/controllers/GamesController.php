@@ -36,9 +36,28 @@ class GamesController extends BaseController
      public function internshipdetail()
      {
         
-        //$id= new companys_personal_info;
-        //$cid=id::last('cid');
-        return View::make('internshipdetail');
+        $id= new domain;
+        $cid=domain::where('pid','=','0')->get();
+        $jid=domain::where('pid','=','0')->get();
+      
+    return View::make('internshipdetail')->with('cid',$cid)->with('jid',$jid);
+     }
+
+     public function handlesubdomain()
+     {
+      
+       
+        $jid=domain::where('pid','=','1')->get();
+        $result = array();
+        foreach ($jid as $xyz)
+            
+           {
+            
+           
+             
+           }
+        return Response::make(json_encode($result), 200); 
+         
      }
 
      public function handleInternshipdetailCreate()
