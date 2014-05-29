@@ -27,7 +27,6 @@ class UserInternshipDetails extends Migration {
 			$table->timestamps();
 
 		});
-
 	}
 
 	/**

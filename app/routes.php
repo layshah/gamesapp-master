@@ -40,3 +40,5 @@ Route::post('/handlesubdomain/{q}','GamesController@handlesubdomain');
 Route::post('/createstudent','GamesController@createstudent');
 Route::post('/handleCreatestudent','GamesController@handleCreatestudent');
 Route::post('/handleuserdata','GamesController@handleuserdata');
+Route::post('/handleuserinternshipdetail','GamesController@handleuserInternshipdetail');
+

@@ -34,8 +34,13 @@ class GamesController extends BaseController
         $game->email = Input::get('email');
         
         $game->save();
-        $umid=user_master::first()->get();
+        $mas=$game->id;
+        //echo $mas;
+         //$mas=user_master::Query('SELECT * FROM mytable WHERE umid = LAST_INSERT_ID()');
+       $umid=user_master::where('umid','=',$mas)->get();
         return View::make('userdetail')->with('umid',$umid);
+       
+       //return Response::make(json_encode($umid), 200); 
        // return Redirect::to('/form_internshipdetail');
     }
 
@@ -58,12 +63,25 @@ class GamesController extends BaseController
     public function handleuserdata()
     {
         $game = new user_detail;
-        $game->cname        = Input::get('cname');
-        $game->Email    = Input::get('Email');
-        $game->contactno = Input::get('contactno');
-        $game->cculture     = Input::get('cculture');
-        $game->cdomain     = Input::get('cdomain');
+        $game->umid        = Input::get('umid');
+        $game->name    = Input::get('name');
+        $game->internshipduration = Input::get('internshipduration');
+        $game->collage     = Input::get('collage');
+        $game->degree     = Input::get('degree');
+        $game->semester     = Input::get('semester');
+        $game->contactno     = Input::get('contactno');
+        $game->aboutyou     = Input::get('aboutyou');
+        $game->aboutprojects     = Input::get('aboutprojects');
+        $game->experience     = Input::get('experience');
+        $game->toolstech     = Input::get('toolstech');
         $game->save(); 
+        $umid1=$game->umid;
+        $umid=user_master::where('umid','=',$umid1)->get();
+         $cid=domain::where('pid','=','0')->get();
+        $jid=domain::where('pid','=','0')->get();
+      
+       return View::make('userinternshipdetail')->with('umid',$umid)->with('cid',$cid)->with('jid',$jid);
+        
     }
      
      public function internshipdetail()
@@ -116,6 +134,24 @@ class GamesController extends BaseController
         return View::make('index');
 
      }
+
+
+     public function handleuserInternshipdetail()
+     {
+        $game = new user_internship_detail;
+        $game->umid        = Input::get('umid');
+        $game->desire    = Input::get('desire');
+        $game->career = Input::get('career');
+        $game->learn     = Input::get('learn');
+        $game->domain     = Input::get('fruits');
+        $game->problem     = Input::get('problem');
+        $game->solution     = Input::get('solution');
+        $game->confusion     = Input::get('confusion');
+        
+        $game->save();
+        return View::make('index');
+
+     } 
 
     public function edit(Game $game)
     {

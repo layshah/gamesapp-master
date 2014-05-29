@@ -9,95 +9,83 @@
         <div class="form-group">
             <label for="umid">User masterid</label>
             @foreach($umid as $game)
-            {{ $game->umid }}
+            <input name="umid" type='text'  value={{ $game->umid }}></input>
             @endforeach
         </div>
 
         <div class="form-group">
             <label for="uname">User name</label>
             @foreach($umid as $game)
-            {{ $game->username }}
+            <input type="text" disabled="disabled" value="{{ $game->username }}" name="username"></input>
             @endforeach
         </div>
         
         <div class="form-group">
             <label for="email">Email</label>
             @foreach($umid as $game)
-            {{ $game->email }}
+            <input name="email" type='text' disabled="disabled" value="{{ $game->email }}">  </input>
             @endforeach
         </div>
 
         <div class="form-group">
-            <label for="jobdesc">Internship description</label>
-            <input type="text" class="form-control" name="jobdesc" />
+            <label for="name">Enater your name</label>
+            <input type="text" class="form-control" name="name" />
         </div>
         <div class="form-group">
-            <label for="nointernswant">Number of interns you want</label>
+            <label for="internshipduration">Enater your avilability for internship</label>
             
-            <input type="text" class="form-control" name="nointernswant" />
+            <input type="text" class="form-control" name="internshipduration" />
         </div>
         
         <div class="form-group">
-            <label for="domain">Enter Domain of intern</label>
-           <select onchange="showsubdomain(this.value)" name="domain">
-
-          
-       </select>
-         
-
+            <label for="collage">Enter your collage name</label>
+           <input type="text" class="form-control" name="collage" />
+        </div>
+       
+       <div class="form-group">
+            <label for="degree">Degree</label>
+            
+            <input type="text" class="form-control" name="degree" />
         </div>
 
+       <div class="form-group">
+            <label for="semester">Semester</label>
+            
+            <input type="text" class="form-control" name="semester" />
+        </div>
+        
         <div class="form-group">
-            <label for="subdomain">Enter SubDomain of intern</label>
-           <select name="fruits">
-
-          
-       </select>
-         
-         </div>
-
+            <label for="contactno">Contactno</label>
+            
+            <input type="text" class="form-control" name="contactno" />
+        </div>
          <div class="form-group">
-            <label for="elegibility">Enter elegibility</label>
-           
-            <input type="text" class="form-control" name="elegibility" />
+            <label for="aboutyou">Enater something about you</label>
+            
+            <input type="textarea" class="form-control" name="aboutyou" />
         </div>
+        
         <div class="form-group">
-            <label for="unrelated">Are unrelated branch people allowed</label>
-           
-            <input type="boolean" class="form-control" name="unrelated" />
+            <label for="aboutprojects">Enter about your projects</label>
+            
+            <input type="textarea" class="form-control" name="aboutprojects" />
         </div>
-
+        
         <div class="form-group">
-            <label for="basicqualification">Enter Basic qulification you want</label>
-           
-            <input type="text" class="form-control" name="basicqualification" />
+            <label for="experience">Enter your experience</label>
+            
+            <input type="textarea" class="form-control" name="experience" />
         </div>
-
+        
         <div class="form-group">
-            <label for="stipend">Enter stipend</label>
-           
-            <input type="text" class="form-control" name="stipend" />
+            <label for="toolstech">Enter tools and technology you know</label>
+            
+            <input type="textarea" class="form-control" name="toolstech" />
         </div>
+        
+        
 
-        <div class="form-group">
-            <label for="internshipperiod">Enter internship duration</label>
-           
-            <input type="text" class="form-control" name="internshipperiod" />
-        </div>
-
-        <div class="form-group">
-            <label for="start">Enter start date</label>
-           
-            <input type="text" class="form-control" name="start" />
-        </div>
-
-        <div class="form-group">
-            <label for="else">Anything else you want</label>
-           
-            <input type="text" class="form-control" name="else" />
-        </div>
-
-
+        
         <input type="submit" value="Next" class="btn btn-primary" />
         <a href="{{ action('GamesController@index') }}" class="btn btn-link">Cancel</a>
     </form>
