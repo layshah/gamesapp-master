@@ -44,6 +44,13 @@ class GamesController extends BaseController
        // return Redirect::to('/form_internshipdetail');
     }
 
+  public  function admin() {
+   $games = companys_personal_info::all();
+   $internshipdetail = internship_detail::all(); 
+   $cid=domain::where('pid','=','0')->get();
+    return View::make('admin')->with('games',$games)->with('internshipdetail',$internshipdetail)->with('cid',$cid);
+}
+
 
     public function handleCreate()
     {
@@ -58,6 +65,21 @@ class GamesController extends BaseController
 
         return Redirect::action('GamesController@internshipdetail');
        // return Redirect::to('/form_internshipdetail');
+    }
+
+
+    public function handleactivitycreate()
+    {
+        // Handle create form submission.
+        $game = new activity_master;
+        $game->activitytitle        = Input::get('activitytitle');
+        $game->description    = Input::get('description');
+        $game->domain = Input::get('domain');
+        
+        $game->save();
+
+        
+        return Redirect::to('/admin');
     }
 
     public function handleuserdata()

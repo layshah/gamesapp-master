@@ -12,32 +12,5 @@
     </div>
     
 
-    @if ($companys_personal_infos->isEmpty())
-        <p>There are no games! :(</p>
-    @else
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Company name</th>
-                    <th>Email</th>
-                    <th>Contact number</th>
-                    <th>Company's culture</th>
-                    <th>Company's domain</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($companys_personal_info as $game)
-                <tr>
-                    <td>{{ $game->cname }}</td>
-                    <td>{{ $game->email }}</td>
-                    <!--<td>{{ $game->complete ? 'Yes' : 'No' }}</td>-->
-                    <td>
-                        <a href="{{ action('GamesController@edit', $game->cid) }}" class="btn btn-default">Edit</a>
-                        <a href="{{ action('GamesController@delete', $game->cid) }}" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @endif
+    
 @stop

@@ -25,10 +25,9 @@ Route::get('/internshipdetail','GamesController@internshipdetail');
 Route::get('/createstudent','GamesController@createstudent');
 Route::get('/handleCreatestudent','GamesController@handleCreatestudent');
 Route::get('/handleuserdata','GamesController@handleuserdata');
-Route::get('/admin',function() {
-   $games = companys_personal_info::all();
-    return View::make('admin')->with('games',$games);
-});
+Route::get('/handleactivitycreate','GamesController@handleactivitycreate');
+
+Route::get('/admin','GamesController@admin');
 Route::get('/handlesubdomain/{q}','GamesController@handlesubdomain');
 // Handle form submissions.
 Route::post('/create', 'GamesController@handleCreate');
@@ -41,4 +40,4 @@ Route::post('/createstudent','GamesController@createstudent');
 Route::post('/handleCreatestudent','GamesController@handleCreatestudent');
 Route::post('/handleuserdata','GamesController@handleuserdata');
 Route::post('/handleuserinternshipdetail','GamesController@handleuserInternshipdetail');
-
+Route::post('/handleactivitycreate','GamesController@handleactivitycreate');

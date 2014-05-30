@@ -1,6 +1,9 @@
 <html>
 
 <head>
+   <meta charset="UTF-8">
+    <title>Games Collection</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 <script>
 function showsubdomain(str) {
     alert("hi");
