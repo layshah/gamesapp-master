@@ -26,8 +26,13 @@ Route::get('/createstudent','GamesController@createstudent');
 Route::get('/handleCreatestudent','GamesController@handleCreatestudent');
 Route::get('/handleuserdata','GamesController@handleuserdata');
 Route::get('/handleactivitycreate','GamesController@handleactivitycreate');
-
+Route::get('/index1',function()
+	{
+		return View::make('index1');
+	});
 Route::get('/admin','GamesController@admin');
+Route::get('/activitylist','GamesController@activitylist');
+Route::get('/handleactivitylist','GamesController@handleactivitylist');
 Route::get('/handlesubdomain/{q}','GamesController@handlesubdomain');
 // Handle form submissions.
 Route::post('/create', 'GamesController@handleCreate');
@@ -41,3 +46,9 @@ Route::post('/handleCreatestudent','GamesController@handleCreatestudent');
 Route::post('/handleuserdata','GamesController@handleuserdata');
 Route::post('/handleuserinternshipdetail','GamesController@handleuserInternshipdetail');
 Route::post('/handleactivitycreate','GamesController@handleactivitycreate');
+Route::post('/activitylist','GamesController@activitylist');
+Route::post('/handleactivitylist','GamesController@handleactivitylist');
+Route::post('/index1',function()
+	{
+		return View::make('index1');
+	});

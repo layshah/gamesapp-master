@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/shipped/!svn/ver/32/refs
+END
+conn.php
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/shipped/!svn/ver/53/refs/conn.php
+END
+session.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/shipped/!svn/ver/7/refs/session.php
+END
+common.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/shipped/!svn/ver/58/refs/common.php
+END
+constants.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/shipped/!svn/ver/53/refs/constants.php
+END

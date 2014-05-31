@@ -38,18 +38,66 @@ class GamesController extends BaseController
         //echo $mas;
          //$mas=user_master::Query('SELECT * FROM mytable WHERE umid = LAST_INSERT_ID()');
        $umid=user_master::where('umid','=',$mas)->get();
-        return View::make('userdetail')->with('umid',$umid);
+       return View::make('userdetail')->with('umid',$umid);
        
        //return Response::make(json_encode($umid), 200); 
        // return Redirect::to('/form_internshipdetail');
     }
 
-  public  function admin() {
-   $games = companys_personal_info::all();
-   $internshipdetail = internship_detail::all(); 
-   $cid=domain::where('pid','=','0')->get();
-    return View::make('admin')->with('games',$games)->with('internshipdetail',$internshipdetail)->with('cid',$cid);
-}
+    public  function admin() 
+    {
+        $games = companys_personal_info::all();
+        $internshipdetail = internship_detail::all(); 
+        $cid=domain::where('pid','=','0')->get();
+        return View::make('admin')->with('games',$games)->with('internshipdetail',$internshipdetail)->with('cid',$cid);
+    }
+
+   public  function activitylist() 
+   {
+        $games = activity_master::all();
+        //$internshipdetail = internship_detail::all(); 
+        //$cid=domain::where('pid','=','0')->get();
+        return View::make('activitylist')->with('games',$games);
+    }
+
+    public function handleactivitylist()
+    {  
+        $x=0;
+        $activity =array();
+        $number = count($_POST['checkbox']);
+        print_r($number);
+        
+        foreach($_POST['checkbox'] as $check) 
+              
+              {
+                $game = new activity_perform_detail;
+                $game->activityid  =  $check;
+                $game->userid = Input::get('umid');$umid1= Input::get('umid');     
+                $game->submit= "";
+                $game->save();
+                //$activity[$x]=activity_master::where('activityid','=',$check)->get();
+                //$x++;                  
+              }    
+        $mas= Input::get('umid');     
+         $umid=user_master::where('umid','=',$mas)->get();
+        
+        $activitytoperformlist=activity_perform_detail::where('userid','=',$umid1)->get();
+       // echo $umid;
+        //echo $activity->get();
+        return View::make('activitytoperform')->with('umid',$umid)->with('atoplist',$activitytoperformlist);
+        // Handle create form submission.
+        //$game = new companys_personal_info;
+        //$game->cname        = Input::get('cname');
+        //$game->Email    = Input::get('Email');
+        //$game->contactno = Input::get('contactno');
+        //$game->cculture     = Input::get('cculture');
+        //$game->cdomain     = Input::get('cdomain');
+        //$game->save();
+
+        //return Redirect::action('GamesController@internshipdetail');
+       // return Redirect::to('/form_internshipdetail');
+    }
+
 
 
     public function handleCreate()
@@ -171,7 +219,10 @@ class GamesController extends BaseController
         $game->confusion     = Input::get('confusion');
         
         $game->save();
-        return View::make('index');
+        $umid1=$game->umid;
+        $umid=user_master::where('umid','=',$umid1)->get();
+        $games = activity_master::all();
+        return View::make('activitylist')->with('umid',$umid)->with('games',$games);
 
      } 
 
