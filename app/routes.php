@@ -26,6 +26,8 @@ Route::get('/createstudent','GamesController@createstudent');
 Route::get('/handleCreatestudent','GamesController@handleCreatestudent');
 Route::get('/handleuserdata','GamesController@handleuserdata');
 Route::get('/handleactivitycreate','GamesController@handleactivitycreate');
+Route::get('/login','GamesController@login');
+Route::get('/handlelogin','GamesController@handlelogin1');
 Route::get('/index1',function()
 	{
 		return View::make('index1');
@@ -52,3 +54,5 @@ Route::post('/index1',function()
 	{
 		return View::make('index1');
 	});
+Route::post('/handlelogin','GamesController@handlelogin1');
+

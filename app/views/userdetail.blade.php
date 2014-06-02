@@ -1,6 +1,6 @@
-<html>
+@extends('layout')
 
-<body>
+@section('content')
     <div class="page-header">
         <h1>Enter details about you<small>we require it</small></h1>
     </div>
@@ -89,6 +89,4 @@
         <input type="submit" value="Next" class="btn btn-primary" />
         <a href="{{ action('GamesController@index') }}" class="btn btn-link">Cancel</a>
     </form>
-</body>
-
-<html>
+@stop

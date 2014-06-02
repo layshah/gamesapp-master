@@ -5,7 +5,6 @@
 class user_master extends Eloquent
 {
 
+	
 }
 
-
-?>

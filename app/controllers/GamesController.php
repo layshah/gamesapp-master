@@ -12,6 +12,36 @@ class GamesController extends BaseController
         return View::make('index');
     }
 
+    public function login()
+    {
+        // Show a listing of games.
+        //$games = Game::all();
+
+        return View::make('login');
+    }
+
+    public function handlelogin1()
+    {
+        // Show a listing of games.
+        //$games = Game::all();
+      $games=activity_master::all();
+      $uname=Input::get('username');
+      $pass=Input::get('password');
+      //echo $uname;
+      //echo $pass;
+      $pass1=user_master::where('username','=',$uname)->get();
+         //echo $pass1;
+          if($pass1[0]['password']==$pass)
+          {
+             
+             return View::make('index');
+          }
+        else
+        { 
+        return View::make('index');
+        }   
+    }
+
     public function create()
     {
         // Show the create game form.
@@ -30,10 +60,37 @@ class GamesController extends BaseController
         // Handle create form submission.
         $game = new user_master;
         $game->username        = Input::get('username');
-        $game->password    = Input::get('password');
+        $password    = Input::get('password');
+        $game->password = $password; //Hash::make($password);
+        
         $game->email = Input::get('email');
         
         $game->save();
+        
+
+    //$to = $toEmail; //deeppatelj@gmail.com";
+  
+  $subject = "Interestship - ";
+  $body1 = "<p>Hi ";
+  $body2 = "<p>Regards, <br> Team Interestship </p>";
+  $body = $body1.$body2;
+  $headers = "From: team@interestship.com\r\n";
+  $headers .= "Reply-To: team@interestship.com\r\n";
+  $headers .= "Return-Path: team@interestship.com\r\n";
+  $headers .= "X-Mailer: PHP5\n";
+  $headers .= 'MIME-Version: 1.0' . "\n";
+  $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+  //$toEmail .= $toEmail."; team@interestship.com"
+  //echo $body;
+  //echo $body;
+  //function email($toEmail, $subject, $body, $headers)
+  mail($game->email,$subject,$body,$headers);
+  
+  
+
+
+
+
         $mas=$game->id;
         //echo $mas;
          //$mas=user_master::Query('SELECT * FROM mytable WHERE umid = LAST_INSERT_ID()');

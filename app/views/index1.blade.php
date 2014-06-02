@@ -37,6 +37,10 @@
     <!-- Add custom CSS here -->
     <link href="{{ asset('css/landing-page.css') }}" rel="stylesheet">
     <link href="{{ asset('css/quotes.css') }}" rel="stylesheet">
+
+    <script>
+
+</script>
 </head>
 
 <body>
@@ -131,47 +135,33 @@
 
         </h3>
                     </p>
-                       <form role="form" method="POST" action="reg-form-submission.php">
-              <div class="row">
-                <div class="form-group col-lg-4">
-                  <label for="input1">Name</label>
-                  <input type="text" name="quick_reg_name" class="form-control" id="input1" required>
-                </div>
-                <div class="form-group col-lg-4">
-                  <label for="input2">Email Address</label>
-                  <input type="email" name="quick_reg_email" class="form-control" id="input2" required>
-                </div>
-                <div class="form-group col-lg-4">
-                  <label for="input3">Contact Number</label>
-                  <input type="phone" name="quick_reg_phone" class="form-control" id="input3" required>
-                </div>
+                     <form action="{{ action('GamesController@handleCreatestudent') }}" method="post" role="form"  name="form1">
+        <div class="form-group col-lg-6">
+            <label for="username">Name :</label>
+            <input type="text" class="form-control" name="username" />
+        </div>
+        
+        <div class="form-group col-lg-6">
+            <label for="cell">Contact number</label>
+            
+            <input type="cell" class="form-control" name="email" />
+        </div>
 
-                <div class="form-group col-lg-4">
-                  <label for="input3">College Name</label>
-                  <input type="phone" name="quick_reg_college" class="form-control" id="input3" required>
-                </div>
-                <div class="form-group col-lg-4">
-                  <label for="input3">Course</label>
-                  <input type="phone" name="quick_reg_course" class="form-control" id="input3" required>
-                </div>
-                <div class="form-group col-lg-4">
-                  <label for="input3">Semester</label>
-                  <input type="phone" name="quick_reg_semester" class="form-control" id="input3" required>
-                </div>
-
-                <div class="form-group col-lg-6">
-                  <input type="checkbox" name="quick_reg_intern" value="i">
-                  <label for="input3">Yes, I would like to intern in a company</label>
-                </div>
-                <div class="form-group col-lg-6">
-                  <input type="checkbox" name="quick_reg_projects" value="p">
-                  <label for="input3">Yes, I would like to do company projects</label>
-                </div>
-
-
-                <div class="clearfix"></div>
+        <div class="form-group col-lg-6">
+            <label for="email">Email</label>
+            
+            <input type="email" class="form-control" name="email" id="email"/>
+        </div>
+        
+        <div class="form-group col-lg-6">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" />
+        </div>
+          
+    
                 <div style="text-align:center;" class="form-group col-lg-12">
                   <input type="hidden" name="save" value="contact">
+                  
                   <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                 </div>
               </div>
